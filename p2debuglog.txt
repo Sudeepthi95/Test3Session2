@@ -1,1 +1,107 @@
+(gdb) b main
+Breakpoint 1 at 0x8af: file p2final.c, line 39.
+(gdb) r
+Starting program: /home/runner/Test3Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p2final.c:39
+39    Fraction f1 = input_fraction();
+(gdb) s
+input_fraction () at p2final.c:9
+9   {
+(gdb) n
+11    printf("Enter one fraction (NUM DEN):\n");
+(gdb) n
+Enter one fraction (NUM DEN):
+12    scanf("%d%d",&f.num,&f.den);
+(gdb) n
+1 2
+13    return f;
+(gdb) n
+14  }
+(gdb) n
+main () at p2final.c:40
+40    Fraction f2 = input_fraction();
+(gdb) s
+input_fraction () at p2final.c:9
+9   {
+(gdb) n
+11    printf("Enter one fraction (NUM DEN):\n");
+(gdb) n
+Enter one fraction (NUM DEN):
+12    scanf("%d%d",&f.num,&f.den);
+(gdb) n
+1 3
+13    return f;
+(gdb) n
+14  }
+(gdb) n
+main () at p2final.c:41
+41    Fraction f3 = input_fraction();
+(gdb) s
+input_fraction () at p2final.c:9
+9   {
+(gdb) n
+11    printf("Enter one fraction (NUM DEN):\n");
+(gdb) n
+Enter one fraction (NUM DEN):
+12    scanf("%d%d",&f.num,&f.den);
+(gdb)  n
+1 4
+13    return f;
+(gdb) n
+14  }
+(gdb) n
+main () at p2final.c:42
+42    Fraction largest = largest_fraction(f1,f2,f3);
+(gdb) s
+largest_fraction (f1=..., f2=..., f3=...) at p2final.c:17
+17    float a=(float)f1.num/f1.den;
+(gdb) p f1.num
+$1 = 1
+(gdb) p f1.den
+$2 = 2
+(gdb) n
+18    float b=(float)f2.num/f2.den;
+(gdb) p a
+$3 = 0.5
+(gdb) p f2.num
+$4 = 1
+(gdb) p f2.den
+$5 = 3
+(gdb) n
+19    float c=(float)f3.num/f3.den;
+(gdb) p b
+$6 = 0.333333343
+(gdb) p f3.num
+$7 = 1
+(gdb) p f3.den
+$8 = 4
+(gdb) n
+20    if (a<b && a<c)
+(gdb) p c
+$9 = 0.25
+(gdb) n
+24    else if (b<c)
+(gdb) n
+30      return f3;
+(gdb) n
+32  }
+(gdb) n
+main () at p2final.c:43
+43    output(f1,f2,f3,largest);
+(gdb) s
+output (f1=..., f2=..., f3=..., largest=...) at p2final.c:35
+35    printf("the smallest of %d/%d,%d/%d and %d/%d is %d/%d\n",f1.num,f1.den,f2.num,f2.den,f3.num,f3.den,largest.num,largest.den);
+(gdb) p largest.num
+$10 = 1
+(gdb) p largest.den
+$11 = 4
+(gdb) n
+the smallest of 1/2,1/3 and 1/4 is 1/4
+36  }
+(gdb) n
+main () at p2final.c:44
+44    return 0;
+(gdb) n
+45  }
